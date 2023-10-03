@@ -1,0 +1,59 @@
+@keyframes ani1 {
+  from {
+    background-color: crimson;
+  }
+
+  to {
+    background-color: yellow;
+  }
+}
+
+@keyframes ani2 {
+  from {
+    background-color: yellow;
+  }
+
+  to {
+    background-color: blue;
+  }
+}
+
+/* Hover does not work while animation is playing.
+   when animation iteration is infinite, it never works.
+   If there is a defined iteration, the hover works after all animations are complete.*/
+
+.ani-trans-clash {
+  background-color: crimson;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+
+  animation-name: ani1;
+  animation-duration: 2s;
+  animation-fill-mode: none;
+  /* Hover does not work when animation-fill-mode "forwards" or "both" is set.
+     If animation-fill-mode is none or backwards, works as stated above, after animation is complete. */
+
+  cursor: pointer;
+}
+
+.ani-trans-clash:hover {
+  background-color: dodgerblue;
+}
+
+.animation-transition {
+  background-color: crimson;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+
+  animation: ani1 2s;
+
+  cursor: pointer;
+
+  transition: animation;
+}
+
+.animation-transition:hover {
+  animation: ani2 2s;
+}

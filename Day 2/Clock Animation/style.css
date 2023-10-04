@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
 *,
 *::before,
 *::after {
@@ -8,15 +10,28 @@
   --clock-radius: 10rem;
   --number-size: 2rem;
   --number-offset: 2rem;
+
+  --minute-hand-animation-duration: 6s;
+  --hour-hand-animation-duration: 72s;
 }
 
-@keyframes handRotation {
+@keyframes minuteHandRotation {
   from {
-    transform: rotate(0deg);
+    transform: rotate(180deg);
   }
 
   to {
-    transform: rotate(360deg);
+    transform: rotate(540deg);
+  }
+}
+
+@keyframes hourHandRotation {
+  from {
+    transform: rotate(-120deg);
+  }
+
+  to {
+    transform: rotate(240deg);
   }
 }
 
@@ -37,29 +52,46 @@ body {
 
 .hour-hand {
   position: absolute;
-  background-color: crimson;
-  height: calc(var(--clock-radius) - 2rem);
-  width: 3px;
+  background-color: rgb(255, 255, 255);
+  height: calc(var(--clock-radius) * 0.56);
+  width: 4px;
   top: 50%;
-  left: 50%;
+  left: calc(var(--clock-radius) - 1px);
+
+  z-index: 1;
+
+  transform-origin: 2px 5px;
+  transform: rotate(-120deg);
+
+  animation: hourHandRotation var(--hour-hand-animation-duration);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 .minute-hand {
   position: absolute;
-  background-color: rgb(255, 255, 255);
-  height: calc(var(--clock-radius) * 0.6);
-  width: 3px;
+  background-color: crimson;
+  height: calc(var(--clock-radius) - var(--number-size) * 1.5);
+  width: 2px;
   top: 50%;
-  left: 50%;
+  left: calc(var(--clock-radius));
+
+  transform-origin: 1px 5px;
+  transform: rotate(180deg);
+
+  animation: minuteHandRotation var(--minute-hand-animation-duration);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 .number {
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   position: absolute;
   font-size: var(--number-size);
+  font-family: 'Dela Gothic One', cursive;
   width: 2rem;
   text-align: center;
-  top: calc(50% - (var(--number-size) / 2));
+  top: calc(50% - (var(--number-size) / 2 + 5px));
   left: calc(50% - (var(--number-size) / 2));
 }
 

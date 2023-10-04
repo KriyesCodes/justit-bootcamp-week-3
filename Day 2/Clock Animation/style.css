@@ -13,6 +13,8 @@
 
   --minute-hand-animation-duration: 6s;
   --hour-hand-animation-duration: 72s;
+
+  --number-glow-animation-duration: 6s;
 }
 
 @keyframes minuteHandRotation {
@@ -27,11 +29,25 @@
 
 @keyframes hourHandRotation {
   from {
-    transform: rotate(-120deg);
+    transform: rotate(-135deg);
   }
 
   to {
-    transform: rotate(240deg);
+    transform: rotate(225deg);
+  }
+}
+
+@keyframes numberGlow {
+  0% {
+    text-shadow: none;
+  }
+
+  50% {
+    text-shadow: 1px 1px 2px white;
+  }
+
+  100% {
+    text-shadow: none;
   }
 }
 
@@ -65,7 +81,7 @@ body {
 
   animation: hourHandRotation var(--hour-hand-animation-duration);
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 
 .minute-hand {
@@ -81,11 +97,11 @@ body {
 
   animation: minuteHandRotation var(--minute-hand-animation-duration);
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 12;
 }
 
 .number {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.3);
   position: absolute;
   font-size: var(--number-size);
   font-family: 'Dela Gothic One', cursive;
@@ -97,48 +113,74 @@ body {
 
 .one {
   transform: rotate(-60deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(60deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 11);
 }
 
 .two {
   transform: rotate(-30deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(30deg);
+
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: 0;
 }
 
 .three {
   transform: rotate(0deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(0deg);
+
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 1);
 }
 
 .four {
   transform: rotate(30deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(-30deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 2);
 }
 
 .five {
   transform: rotate(60deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(-60deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 3);
 }
 
 .six {
   transform: rotate(90deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(-90deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 4);
 }
 
 .seven {
   transform: rotate(120deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(-120deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 5);
 }
 
 .eight {
   transform: rotate(150deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(-150deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 6);
 }
 
 .nine {
   transform: rotate(180deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(-180deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 7);
 }
 
 .ten {
   transform: rotate(210deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(-210deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 8);
 }
 
 .eleven {
   transform: rotate(240deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(-240deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 9);
 }
 
 .twelve {
   transform: rotate(270deg) translate(calc(var(--clock-radius) - var(--number-offset))) rotate(-270deg);
+  animation: numberGlow var(--number-glow-animation-duration) linear;
+  animation-delay: calc(var(--number-glow-animation-duration) * 10);
 }

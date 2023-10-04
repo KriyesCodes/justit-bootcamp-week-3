@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --number-radius: 5rem;
+  --clock-radius: 5rem;
+}
+
+@keyframes handRotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  background-color: black;
+}
+
+.clock {
+  position: relative;
+  margin: 10rem auto;
+  background-color: rgb(46, 46, 46);
+  color: rgb(255, 255, 255);
+  width: calc(var(--clock-radius) * 2);
+  height: calc(var(--clock-radius) * 2);
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+.number {
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+}
+
+.one {
+  transform: rotate(30deg) translate(var(--number-radius)) rotate(-30deg);
+}
+
+.two {
+  top: calc(var(--clock-radius) - (var(--number-radius) * cos(60deg)));
+  left: calc(var(--clock-radius) + (var(--number-radius) * sin(60deg)));
+}
+
+.three {
+  top: calc(var(--clock-radius) - (var(--number-radius) * cos(90deg)));
+  left: calc(var(--clock-radius) + (var(--number-radius) * sin(90deg)));
+}
+
+.four {
+  top: 0;
+  left: 0;
+}
